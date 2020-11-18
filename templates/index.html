@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +12,83 @@
   />
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>`
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{% static 'L.Geoserver.js' %}"></script>
 
     <title>Geo Inmormatics</title>
 </head>
+<!-- try for nav bar -->
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
+<div class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                        <a href="#" class="navbar-brand">Swadesh Properties</a>
+                    </div>
+
+                    <div class="navbar-collapse collapse" id="mobile_menu">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Housing Project <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">About One</a></li>
+                                    <li><a href="#">About Two</a></li>
+                                    <li><a href="#">About Three</a></li>
+                                    <li><a href="#">About Four</a></li>
+                                    <li><a href="#">About Five</a></li>
+                                    <li><a href="#">About Six</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Welcome</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <form action="" class="navbar-form">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="search" name="search" id="" placeholder="Search Anything Here..." class="form-control">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/accounts/login">Login</a></li>
+                                    <li><a href="/accounts/logout/">Log out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+
+<!-- try for nav bar end -->
+
+
+<!-- try for slide pictur -->
+
+
 
 
 
@@ -99,20 +175,93 @@
         }
       }
 
-        $.getJSON("{% url 'bangladeshData' %}", function (data) {
-            L.geoJSON(data, {
-          onEachFeature: function (feature, layer) {
-            layer.bindPopup(
-              `<h5>District Name: ${feature.properties.adm2_en}</h5><h5>Region name: ${feature.properties.adm1_en}</h5>`
-            );
-          },style: geojsonStyle,}).addTo(map);
-        console.log(data);
+        // $.getJSON("{% url 'bangladeshData' %}", function (data) {
+        //     L.geoJSON(data, {
+        //   onEachFeature: function (feature, layer) {
+        //     layer.bindPopup(
+        //       `<h5>District Name: ${feature.properties.adm2_en}</h5><h5>Region name: ${feature.properties.adm1_en}</h5>`
+        //     );
+        //   },style: geojsonStyle,}).addTo(map);
+        // console.log(data);
         
-        });
-  
+        // });
 
-  
+// geoserver request
+
+
+
+//dsfsdfsdfs
+// var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
+//   // layers: "webgis_101:dhaka",
+//   layers: "webgis_101:Bangladesh",
+// });
+// wmsLayer.addTo(map);
+
+
+// var wmsLayer_keraniganj = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
+
+//   layers: "webgis_101:dhaka",
+// });
+// wmsLayer_keraniganj.addTo(map);
+
+
+// var wmsLayer_housing_plot = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
+
+// layers: "webgis_101:housing_Project",
+// });
+// wmsLayer_housing_plot.addTo(map);
+
+
+//...
+
+// var wfsLayer_bangladesh = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
+//   layers: "webgis_101:Bangladesh",
+//   style: {
+//     color: "red",
+//     fillOpacity: "0",
+//     opacity: "0.5",
+//   },
+// });
+// wfsLayer_bangladesh.addTo(map);
+
+
+
+var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
+  layers: "webgis_101:bangladesh_from_db,webgis_101:housing_Project",
+
+  style: {
+    color: "black",
+    fillOpacity: "0",
+    opacity: "0.5",
+  },
+ 
+  onEachFeature: function (feature, layer) {
+    // eta speific feature er popup dekhanor jonno
+    if(feature.properties && feature.properties.Plot_No){
+
+
+    layer.bindPopup(
+      `<h5>Area  Amaount SQFT: ${feature.properties.Area_Sqft}</h5>
+      <h5>Katha Amaount: ${feature.properties.Katha}</h5>
+      <h5>Plot Number: ${feature.properties.Plot_No}</h5>
+      <h5><a href="/accounts/login/">Details</a></h5>`
+    );
+
+    }
+  },
+});
+wfsLayer.addTo(map);
+
+
+//.......
+
+
 
     </script>
 </body>
 </html>
+
+
+<!-- <a href="page3.html" onclick="newPopup('page2.html');">Click here</a> -->
+
+<!-- <h5><a href="accounts/login/">Details</a></h5> -->
