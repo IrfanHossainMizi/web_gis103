@@ -92,8 +92,8 @@
 
 <style>
     #map {
-        width: 100%;
-        height: 400px;
+      width: 100%;
+      height: 80vh;
     }
   </style>
 <body>
@@ -144,89 +144,25 @@
   
         var baseLayers = {
           osm: osm,
-          dark : darkLayer,
+          // dark : darkLayer,
           "water color map": watercolor,
         };
   
         osm.addTo(map);
         L.control.layers(baseLayers).addTo(map);
 
-              //Geojson style function
-      function geojsonStyle(feature) {
-        return {
-          fillColor: getColor(feature.properties.adm1_en),
-          weight: 2,
-          opacity: 1,
-          color: "#5e380f",
-          fillOpacity: 0.7,
-        };
-      }
-
-      //GetColor function
-      function getColor(adm1_en) {
-        if (adm1_en == "Dhaka") {
-          return "#008080";
-        } else if (adm1_en == "Rajshahi") {
-          return "#badd99";
-        } else if (adm1_en== "Chittagong") {
-          return "#dd99ba";
-        }else if (adm1_en == "Sylhet") {
-          return "#115CE9";
-        } else if (adm1_en== "Khulna") {
-          return "#A8A807"; }
-          else {
-          return "#c69540";
-        }
-      }
-
-        // $.getJSON("{% url 'bangladeshData' %}", function (data) {
-        //     L.geoJSON(data, {
-        //   onEachFeature: function (feature, layer) {
-        //     layer.bindPopup(
-        //       `<h5>District Name: ${feature.properties.adm2_en}</h5><h5>Region name: ${feature.properties.adm1_en}</h5>`
-        //     );
-        //   },style: geojsonStyle,}).addTo(map);
-        // console.log(data);
-        
-        // });
-
-// geoserver request
 
 
 
-//dsfsdfsdfs
-// var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
-//   // layers: "webgis_101:dhaka",
-//   layers: "webgis_101:Bangladesh",
-// });
-// wmsLayer.addTo(map);
 
+// wms layer
+// for color full map in geoserver 
+var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
+  layers: "webgis_101:irfan_house101",
+  
+});
+wmsLayer.addTo(map);
 
-// var wmsLayer_keraniganj = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
-
-//   layers: "webgis_101:dhaka",
-// });
-// wmsLayer_keraniganj.addTo(map);
-
-
-// var wmsLayer_housing_plot = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
-
-// layers: "webgis_101:housing_Project",
-// });
-// wmsLayer_housing_plot.addTo(map);
-
-
-//...
-
-// var wfsLayer_bangladesh = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
-//   layers: "webgis_101:Bangladesh",
-//   style: {
-//     color: "red",
-//     fillOpacity: "0",
-//     opacity: "0.5",
-//   },
-// });
-// wfsLayer_bangladesh.addTo(map);
 
 
 
@@ -257,7 +193,12 @@ var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
 });
 wfsLayer.addTo(map);
 
+var layerLegend = L.Geoserver.legend("http://localhost:8080/geoserver/wms", {
+  layers: "webgis_101:irfan_house101",
+  style: `house_irfan101`,
+});
 
+layerLegend.addTo(map);
 //.......
 function openFullMap() {
         map.requestFullscreen();
@@ -268,6 +209,36 @@ function openFullMap() {
     })
 
     L.control.browserPrint().addTo(map);
+
+      //         //Geojson style function
+      //         function geojsonStyle(feature) {
+      //   return {
+      //     fillColor: getColor(feature.properties.Katha),
+      //     weight: 2,
+      //     opacity: 1,
+      //     color: "#5e380f",
+      //     fillOpacity: 0.7,
+      //   };
+      // }
+
+      // //GetColor function
+      // function getColor(Katha) {
+      //   if (Katha == "3.14511696480288") {
+      //     return "#008080";
+      //   } else if (Katha < 3) {
+      //     return "#badd99";
+      //   }
+      //     else {
+      //     return "#c69540";
+      //   }
+      // }
+
+
+
+      //.......
+
+// for color full image and its legend which is wms layer in geoserver
+
 
 
     </script>
