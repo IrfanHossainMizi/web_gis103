@@ -158,7 +158,7 @@
 // wms layer
 // for color full map in geoserver 
 var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
-  layers: "webgis_101:irfan_house101",
+  layers: "webgis_101:try_area_k_housing",
   
 });
 wmsLayer.addTo(map);
@@ -167,7 +167,7 @@ wmsLayer.addTo(map);
 
 
 var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
-  layers: "webgis_101:housing_Project",
+  layers: "webgis_101:try_area_k_housing",
 
   style: {
     color: "black",
@@ -185,6 +185,12 @@ var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
       <h5>Katha Amaount: ${feature.properties.Katha}</h5>
       <h5>Plot Number: ${feature.properties.Plot_No}</h5>
       <h5>Plot Area Bigha: ${feature.properties.Area_Bigha}</h5>
+      <h5>Owner Name: ${feature.properties.Owner_Name}</h5>
+      <h5>Father Name: ${feature.properties.Father__}</h5>
+      <h5>Spouse Name: ${feature.properties.Spouse_Nam}</h5>
+      <h5>Area K: ${feature.properties.Area_k}</h5>
+      <h5>Katha ammount : ${feature.properties.new}</h5>
+      <h5>Land condition : ${feature.properties.land_cat}</h5>
       <h5>Dimension: ${feature.properties.Dimension}</h5>`
     );
 
@@ -194,8 +200,8 @@ var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
 wfsLayer.addTo(map);
 
 var layerLegend = L.Geoserver.legend("http://localhost:8080/geoserver/wms", {
-  layers: "webgis_101:irfan_house101",
-  style: `house_irfan101`,
+  layers: "webgis_101:try_area_k_housing",
+  style: `try_Area_k`,
 });
 
 layerLegend.addTo(map);

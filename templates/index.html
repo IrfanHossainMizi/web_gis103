@@ -193,7 +193,7 @@
 // wms layer
 // for color full map in geoserver 
 var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
-  layers: "webgis_101:irfan_house101",
+  layers: "webgis_101:try101",
 });
 
 
@@ -235,8 +235,8 @@ wfsLayer.addTo(map);
 // for color full image and its legend which is wms layer in geoserver
 wmsLayer.addTo(map);
 var layerLegend = L.Geoserver.legend("http://localhost:8080/geoserver/wms", {
-  layers: "webgis_101:irfan_house101",
-  style: `house_irfan101`,
+  layers: "webgis_101:try101",
+  style: `try104`,
 });
 
 layerLegend.addTo(map);
