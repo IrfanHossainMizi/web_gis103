@@ -13,7 +13,6 @@
   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>`
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="{% static 'L.Geoserver.js' %}"></script>
-  <script src="{% static 'L.leaflet.browser.print.min.js' %}"></script>
 
     <title>Geo Inmormatics</title>
 </head>
@@ -37,12 +36,10 @@
                             <li class="active"><a href="#">Home</a></li>
                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Housing Project <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">About One</a></li>
-                                    <li><a href="#">About Two</a></li>
-                                    <li><a href="#">About Three</a></li>
-                                    <li><a href="#">About Four</a></li>
-                                    <li><a href="#">About Five</a></li>
-                                    <li><a href="#">About Six</a></li>
+                                  <li><a href="/home">Swadesh Properties Ltd</a></li>
+                                  <li><a href="#">Concord Real Estate</a></li>
+                                  <li><a href="#">Nakshi Homes Ltd</a></li>
+
                                 </ul>
                             </li>
                             <li><a href="#">Welcome</a></li>
@@ -64,7 +61,7 @@
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
                             <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="/accounts/login">Login</a></li>
@@ -87,26 +84,23 @@
 <!-- try for nav bar end -->
 
 
+<!-- try for slide pictur -->
+
+
 
 
 
 <style>
     #map {
-      width: 90%;
-      height: 70vh;
+      width: 100%;
+      height: 80vh;
     }
   </style>
 <body>
 
 
     <h1 style="text-align:center">Swadesh Properties Ltd</h1>
-
-    
-    <button class="print-map">Print map</button>
-
-    <div id="map">
-        <!-- <button onclick='openFullMap()' class="leaflet-control">Full map screen</button> -->
-    </div>
+    <div id="map"></div>
 
 
     
@@ -124,7 +118,8 @@
         var darkLayer = L.tileLayer(
           "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
           {
-            maxZoom: 20,
+            maminZoom: 1,
+            xZoom: 20,
             attribution:
               '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
           }
@@ -141,17 +136,15 @@
             ext: "jpg",
           }
         );
-  
-
 // For imagery view
-var mapLink = 
+       var mapLink = 
             '<a href="http://www.esri.com/">Esri</a>';
        var wholink = 
             'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
         var imagery = L.tileLayer(
             'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             attribution: '&copy; '+mapLink+', '+wholink,
-            maxZoom: 17,
+            maxZoom: 18,
             });
   
   
@@ -161,26 +154,67 @@ var mapLink =
           "water color map": watercolor,
           "Imagery view" : imagery,
         };
+  
         osm.addTo(map);
         L.control.layers(baseLayers).addTo(map);
+// give color using code on this shape file
+              //Geojson style function
+      // function geojsonStyle(feature) {
+      //   return {
+      //     fillColor: getColor(feature.properties.adm1_en),
+      //     weight: 2,
+      //     opacity: 1,
+      //     color: "#5e380f",
+      //     fillOpacity: 0.7,
+      //   };
+      // }
 
+      // //GetColor function
+      // function getColor(adm1_en) {
+      //   if (adm1_en == "Dhaka") {
+      //     return "#008080";
+      //   } else if (adm1_en == "Rajshahi") {
+      //     return "#badd99";
+      //   } else if (adm1_en== "Chittagong") {
+      //     return "#dd99ba";
+      //   }else if (adm1_en == "Sylhet") {
+      //     return "#115CE9";
+      //   } else if (adm1_en== "Khulna") {
+      //     return "#A8A807"; }
+      //     else {
+      //     return "#c69540";
+      //   }
+      // }
 
+        // $.getJSON("{% url 'bangladeshData' %}", function (data) {
+        //     L.geoJSON(data, {
+        //   onEachFeature: function (feature, layer) {
+        //     layer.bindPopup(
+        //       `<h5>District Name: ${feature.properties.adm2_en}</h5><h5>Region name: ${feature.properties.adm1_en}</h5>`
+        //     );
+        //   },style: geojsonStyle,}).addTo(map);
+        // console.log(data);
+        
+        // });
 
+// geoserver request
 
 
 // wms layer
 // for color full map in geoserver 
 var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
-  layers: "webgis_101:try_area_k_housing",
-  
+  layers: "webgis_101:try101",
 });
-wmsLayer.addTo(map);
 
 
 
+
+
+
+//wfs layer
 
 var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
-  layers: "webgis_101:try_area_k_housing",
+  layers: "webgis_101:bangladesh_from_db,webgis_101:housing_Project",
 
   style: {
     color: "black",
@@ -197,14 +231,7 @@ var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
       `<h5>Area  Amaount SQFT: ${feature.properties.Area_Sqft}</h5>
       <h5>Katha Amaount: ${feature.properties.Katha}</h5>
       <h5>Plot Number: ${feature.properties.Plot_No}</h5>
-      <h5>Plot Area Bigha: ${feature.properties.Area_Bigha}</h5>
-      <h5>Owner Name: ${feature.properties.Owner_Name}</h5>
-      <h5>Father Name: ${feature.properties.Father__}</h5>
-      <h5>Spouse Name: ${feature.properties.Spouse_Nam}</h5>
-      <h5>Area K: ${feature.properties.Area_k}</h5>
-      <h5>Katha ammount : ${feature.properties.new}</h5>
-      <h5>Land condition : ${feature.properties.land_cat}</h5>
-      <h5>Dimension: ${feature.properties.Dimension}</h5>`
+      <h5><a href="/accounts/login/">Details</a></h5>`
     );
 
     }
@@ -212,51 +239,17 @@ var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
 });
 wfsLayer.addTo(map);
 
+
+//.......
+
+// for color full image and its legend which is wms layer in geoserver
+wmsLayer.addTo(map);
 var layerLegend = L.Geoserver.legend("http://localhost:8080/geoserver/wms", {
-  layers: "webgis_101:try_area_k_housing",
-  style: `try_Area_k`,
+  layers: "webgis_101:try101",
+  style: `try104`,
 });
 
 layerLegend.addTo(map);
-//.......
-// function openFullMap() {
-//         map.requestFullscreen();
-//     }
-
-    $('.print-map').click(function () {
-        window.print();
-    })
-
-    L.control.browserPrint().addTo(map);
-
-      //         //Geojson style function
-      //         function geojsonStyle(feature) {
-      //   return {
-      //     fillColor: getColor(feature.properties.Katha),
-      //     weight: 2,
-      //     opacity: 1,
-      //     color: "#5e380f",
-      //     fillOpacity: 0.7,
-      //   };
-      // }
-
-      // //GetColor function
-      // function getColor(Katha) {
-      //   if (Katha == "3.14511696480288") {
-      //     return "#008080";
-      //   } else if (Katha < 3) {
-      //     return "#badd99";
-      //   }
-      //     else {
-      //     return "#c69540";
-      //   }
-      // }
-
-
-
-      //.......
-
-// for color full image and its legend which is wms layer in geoserver
 
 
 
@@ -264,7 +257,3 @@ layerLegend.addTo(map);
 </body>
 </html>
 
-
-<!-- <a href="page3.html" onclick="newPopup('page2.html');">Click here</a> -->
-
-<!-- <h5><a href="accounts/login/">Details</a></h5> -->
