@@ -29,3 +29,35 @@ class Bangladesh(models.Model):
 
     # def __str__(self):
     #     return self.adm2_en
+
+class Sodesh(models.Model):
+    geom = gis_model.PolygonField(srid=3857, blank=True, null=True)
+    area_sqft = models.FloatField(blank=True, null=True)
+    area_bigha = models.FloatField(blank=True, null=True)
+    type = models.CharField(max_length=50, blank=True, null=True)
+    katha = models.CharField(max_length=20, blank=True, null=True)
+    plot_type = models.CharField(max_length=20, blank=True, null=True)
+    area_k = models.CharField(max_length=20, blank=True, null=True)
+    dimension = models.CharField(max_length=20, blank=True, null=True)
+    plot_no = models.CharField(max_length=50, blank=True, null=True)
+    katha_1 = models.CharField(max_length=20, blank=True, null=True)
+    road_name = models.CharField(max_length=100, blank=True, null=True)
+    owner_name = models.CharField(max_length=50, blank=True, null=True)
+    father_field = models.CharField(db_column='father__', max_length=50, blank=True, null=True)  # Field renamed because it contained more than one '_' in a row. Field renamed because it ended with '_'.
+    spouse_nam = models.CharField(max_length=50, blank=True, null=True)
+    national_i = models.BigIntegerField(blank=True, null=True)
+    tin_field = models.BigIntegerField(db_column='tin___', blank=True, null=True)  # Field renamed because it contained more than one '_' in a row. Field renamed because it ended with '_'.
+    land_price = models.BigIntegerField(blank=True, null=True)
+    mou_name = models.CharField(max_length=50, blank=True, null=True)
+    mou_jl = models.CharField(max_length=50, blank=True, null=True)
+    pur_date = models.DateField(blank=True, null=True)
+    paid_date = models.DateField(blank=True, null=True)
+    inst_date = models.DateField(blank=True, null=True)
+    new = models.IntegerField(blank=True, null=True)
+    land_cat = models.CharField(max_length=50, blank=True, null=True)
+    road = models.CharField(max_length=50, blank=True, null=True)
+    id_new = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'sodesh'

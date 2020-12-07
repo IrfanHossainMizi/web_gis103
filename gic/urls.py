@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from .views import home
 
-from bd.views import login_view, register_view, logout_view
+from bd.views import login_view, register_view, logout_view, sodesh,homeso
 
 
 urlpatterns = [
@@ -26,6 +26,7 @@ urlpatterns = [
     path('detail/',home),
     path('accounts/login/', login_view),
     path('accounts/register/', register_view),
-    path('accounts/logout/', logout_view)
+    path('accounts/logout/', logout_view),
+    path('sodeshDat/',homeso)
 
 ]

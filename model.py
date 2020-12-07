@@ -8,6 +8,43 @@
 from django.contrib.gis.db import models
 
 
+class AllPole7G(models.Model):
+    gid = models.AutoField(primary_key=True)
+    feeder = models.CharField(max_length=254, blank=True, null=True)
+    f01_way_po = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    f02_feeder = models.CharField(max_length=254, blank=True, null=True)
+    f03_pole_n = models.CharField(max_length=254, blank=True, null=True)
+    yy = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    xx = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    f06_pole_s = models.CharField(max_length=254, blank=True, null=True)
+    f07_pole_m = models.CharField(max_length=254, blank=True, null=True)
+    f08_pole_t = models.CharField(max_length=254, blank=True, null=True)
+    f09_pole_f = models.CharField(max_length=254, blank=True, null=True)
+    f10_pole_e = models.CharField(max_length=254, blank=True, null=True)
+    f11_conduc = models.CharField(max_length=254, blank=True, null=True)
+    f12_conduc = models.CharField(max_length=254, blank=True, null=True)
+    f13_conduc = models.CharField(max_length=254, blank=True, null=True)
+    f14_transf = models.CharField(max_length=254, blank=True, null=True)
+    f15_transf = models.CharField(max_length=254, blank=True, null=True)
+    f16_transf = models.CharField(max_length=254, blank=True, null=True)
+    f21_guy_un = models.CharField(max_length=254, blank=True, null=True)
+    f22_jumper = models.CharField(max_length=254, blank=True, null=True)
+    f23_device = models.CharField(max_length=254, blank=True, null=True)
+    f24_device = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    f25_landma = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    f26_remark = models.CharField(max_length=254, blank=True, null=True)
+    f11kv = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    f0_23kv = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    f0_440kv = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    f6_35kv = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
+    f33kv = models.CharField(max_length=254, blank=True, null=True)
+    geom = models.PointField(srid=32642, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'all_pole_7g'
+
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -173,3 +210,122 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
+
+
+class Housingso(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    geom = models.PolygonField(srid=3857, blank=True, null=True)
+    area_sqft = models.FloatField(blank=True, null=True)
+    area_bigha = models.FloatField(blank=True, null=True)
+    type = models.CharField(max_length=50, blank=True, null=True)
+    katha = models.CharField(max_length=20, blank=True, null=True)
+    plot_type = models.CharField(max_length=20, blank=True, null=True)
+    area_k = models.CharField(max_length=20, blank=True, null=True)
+    dimension = models.CharField(max_length=20, blank=True, null=True)
+    plot_no = models.CharField(max_length=50, blank=True, null=True)
+    katha_1 = models.CharField(max_length=20, blank=True, null=True)
+    road_name = models.CharField(max_length=100, blank=True, null=True)
+    owner_name = models.CharField(max_length=50, blank=True, null=True)
+    father_field = models.CharField(db_column='father__', max_length=50, blank=True, null=True)  # Field renamed because it contained more than one '_' in a row. Field renamed because it ended with '_'.
+    spouse_nam = models.CharField(max_length=50, blank=True, null=True)
+    national_i = models.BigIntegerField(blank=True, null=True)
+    tin_field = models.BigIntegerField(db_column='tin___', blank=True, null=True)  # Field renamed because it contained more than one '_' in a row. Field renamed because it ended with '_'.
+    land_price = models.BigIntegerField(blank=True, null=True)
+    mou_name = models.CharField(max_length=50, blank=True, null=True)
+    mou_jl = models.CharField(max_length=50, blank=True, null=True)
+    pur_date = models.DateField(blank=True, null=True)
+    paid_date = models.DateField(blank=True, null=True)
+    inst_date = models.DateField(blank=True, null=True)
+    new = models.IntegerField(blank=True, null=True)
+    land_cat = models.CharField(max_length=50, blank=True, null=True)
+    road = models.CharField(max_length=50, blank=True, null=True)
+    id_new = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'housingso'
+
+
+class Housingsodesh(models.Model):
+    id = models.BigIntegerField(primary_key=True)
+    geom = models.MultiPolygonField(srid=3857, blank=True, null=True)
+    area_sqft = models.FloatField(blank=True, null=True)
+    area_bigha = models.FloatField(blank=True, null=True)
+    type = models.CharField(max_length=50, blank=True, null=True)
+    katha = models.CharField(max_length=20, blank=True, null=True)
+    plot_type = models.CharField(max_length=20, blank=True, null=True)
+    area_k = models.CharField(max_length=20, blank=True, null=True)
+    dimension = models.CharField(max_length=20, blank=True, null=True)
+    plot_no = models.CharField(max_length=50, blank=True, null=True)
+    katha_1 = models.CharField(max_length=20, blank=True, null=True)
+    road_name = models.CharField(max_length=100, blank=True, null=True)
+    owner_name = models.CharField(max_length=50, blank=True, null=True)
+    father_field = models.CharField(db_column='father__', max_length=50, blank=True, null=True)  # Field renamed because it contained more than one '_' in a row. Field renamed because it ended with '_'.
+    spouse_nam = models.CharField(max_length=50, blank=True, null=True)
+    national_i = models.BigIntegerField(blank=True, null=True)
+    tin_field = models.BigIntegerField(db_column='tin___', blank=True, null=True)  # Field renamed because it contained more than one '_' in a row. Field renamed because it ended with '_'.
+    land_price = models.BigIntegerField(blank=True, null=True)
+    mou_name = models.CharField(max_length=50, blank=True, null=True)
+    mou_jl = models.CharField(max_length=50, blank=True, null=True)
+    pur_date = models.DateField(blank=True, null=True)
+    paid_date = models.DateField(blank=True, null=True)
+    inst_date = models.DateField(blank=True, null=True)
+    new = models.IntegerField(blank=True, null=True)
+    land_cat = models.CharField(max_length=50, blank=True, null=True)
+    road = models.CharField(max_length=50, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'housingsodesh'
+
+
+class NarayanganjTotalConsumers(models.Model):
+    gid = models.AutoField(primary_key=True)
+    consumer_l = models.CharField(max_length=50, blank=True, null=True)
+    ac_number = models.CharField(max_length=50, blank=True, null=True)
+    pole_nu = models.CharField(max_length=254, blank=True, null=True)
+    page_nu = models.CharField(max_length=254, blank=True, null=True)
+    consumer_n = models.CharField(max_length=254, blank=True, null=True)
+    catagory = models.CharField(max_length=254, blank=True, null=True)
+    connect_lo = models.CharField(max_length=254, blank=True, null=True)
+    service_sp = models.CharField(max_length=254, blank=True, null=True)
+    service_wi = models.CharField(max_length=254, blank=True, null=True)
+    objectid = models.BigIntegerField(blank=True, null=True)
+    geom = models.PointField(srid=32642, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'narayanganj total consumers'
+
+
+class Sodesh(models.Model):
+    geom = models.PolygonField(srid=3857, blank=True, null=True)
+    area_sqft = models.FloatField(blank=True, null=True)
+    area_bigha = models.FloatField(blank=True, null=True)
+    type = models.CharField(max_length=50, blank=True, null=True)
+    katha = models.CharField(max_length=20, blank=True, null=True)
+    plot_type = models.CharField(max_length=20, blank=True, null=True)
+    area_k = models.CharField(max_length=20, blank=True, null=True)
+    dimension = models.CharField(max_length=20, blank=True, null=True)
+    plot_no = models.CharField(max_length=50, blank=True, null=True)
+    katha_1 = models.CharField(max_length=20, blank=True, null=True)
+    road_name = models.CharField(max_length=100, blank=True, null=True)
+    owner_name = models.CharField(max_length=50, blank=True, null=True)
+    father_field = models.CharField(db_column='father__', max_length=50, blank=True, null=True)  # Field renamed because it contained more than one '_' in a row. Field renamed because it ended with '_'.
+    spouse_nam = models.CharField(max_length=50, blank=True, null=True)
+    national_i = models.BigIntegerField(blank=True, null=True)
+    tin_field = models.BigIntegerField(db_column='tin___', blank=True, null=True)  # Field renamed because it contained more than one '_' in a row. Field renamed because it ended with '_'.
+    land_price = models.BigIntegerField(blank=True, null=True)
+    mou_name = models.CharField(max_length=50, blank=True, null=True)
+    mou_jl = models.CharField(max_length=50, blank=True, null=True)
+    pur_date = models.DateField(blank=True, null=True)
+    paid_date = models.DateField(blank=True, null=True)
+    inst_date = models.DateField(blank=True, null=True)
+    new = models.IntegerField(blank=True, null=True)
+    land_cat = models.CharField(max_length=50, blank=True, null=True)
+    road = models.CharField(max_length=50, blank=True, null=True)
+    id_new = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'sodesh'

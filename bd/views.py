@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from .models import Bangladesh
 from django.contrib import messages
 
-
+from .models import Sodesh
 
 from django.shortcuts import render, redirect
 
@@ -69,9 +69,18 @@ def bangladesh(request):
     bangladeshData = serialize('geojson', Bangladesh.objects.all())
     return HttpResponse(bangladeshData, content_type='geojson')
 
+def sodesh(request):
+    sodeshData = serialize('geojson', Sodesh.objects.all())
+    return HttpResponse(sodeshData, content_type='geojson')
+
 def index(request):
     return render(request, 'index.html')
 
 
 def home(request):
+
     return render(request, 'index_2.html')
+
+def homeso(request):
+
+    return render(request, 'home_sodesh.html')

@@ -1,0 +1,6 @@
+in here go to this project and update database
+
+http://127.0.0.1:8000/sodeshDat/
+
+user id : admin
+pass : admin
