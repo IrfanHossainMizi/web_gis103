@@ -29,7 +29,7 @@ def login_view(request):
         login(request, user)
         if next:
             return redirect(next)
-        return redirect('/detail')
+        return redirect('/sodeshDat')
 
     context = {
         'form': form,
