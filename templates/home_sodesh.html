@@ -29,26 +29,24 @@
 
                     <div class="navbar-header">
                         <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <a href="#" class="navbar-brand">Swadesh Properties</a>
+                        <a href="#" class="navbar-brand">About PIMS</a>
                     </div>
 
                     <div class="navbar-collapse collapse" id="mobile_menu">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Housing Project <span class="caret"></span></a>
+                          <li class="active"><a href="/pricing">Pricing</a></li>
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Clients <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">About One</a></li>
-                                    <li><a href="#">About Two</a></li>
-                                    <li><a href="#">About Three</a></li>
-                                    <li><a href="#">About Four</a></li>
-                                    <li><a href="#">About Five</a></li>
-                                    <li><a href="#">About Six</a></li>
+                                  <li><a href="/home">Swadesh Properties Ltd</a></li>
+                                  <li><a href="#">Concord Real Estate</a></li>
+                                  <li><a href="#">Nakshi Homes Ltd</a></li>
+
                                 </ul>
                             </li>
                             <li><a href="#">Welcome</a></li>
                             <li><a href="#">Services</a></li>
                             <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Demo</a></li>
                         </ul>
                         <ul class="nav navbar-nav">
                             <li>
@@ -95,6 +93,49 @@
       width: 90%;
       height: 70vh;
     }
+
+
+
+
+
+
+/*Legend specific*/
+.legend {
+  padding: 6px 8px;
+  font: 14px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+  /*border-radius: 5px;*/
+  line-height: 24px;
+  color: #555;
+}
+.legend h4 {
+  text-align: center;
+  font-size: 16px;
+  margin: 2px 12px 8px;
+  color: #777;
+}
+
+.legend span {
+  position: relative;
+  bottom: 3px;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin: 0 8px 0 0;
+  opacity: 0.7;
+}
+
+.legend i.icon {
+  background-size: 18px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+
   </style>
 <body>
 
@@ -196,10 +237,23 @@ $.getJSON("{% url 'sodeshData' %}", function (data) {
     );
   },}).addTo(map);
 console.log(data);
-// L.geoJSON(data).addTo(map);
-// console.log(data);
 });
 
+/*Legend specific*/
+var legend = L.control({ position: "topleft" });
+
+legend.onAdd = function(map) {
+  var div = L.DomUtil.create("div", "legend");
+  div.innerHTML += "<h4>Legend</h4>";
+  div.innerHTML += '<i style="background: #E42643"></i><span>Sold plot</span><br>';
+  div.innerHTML += '<i style="background: #13a90d"></i><span>Unsold plot </span><br>';
+  div.innerHTML += '<i style="background: #31181d"></i><span>Road</span><br>';
+ 
+
+  return div;
+};
+
+legend.addTo(map);
 
 
     </script>

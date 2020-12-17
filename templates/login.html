@@ -1,25 +1,5 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-    <h1>Login</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" />
-    </form>
-</body>
-
-</html> -->
-
-
+{% load static %}
 
 
 <!DOCTYPE html>
@@ -69,6 +49,31 @@ img.avatar {
   border-radius: 50%;
 }
 
+
+.cardView{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  /*
+  This doesn't work
+  margin-left: -25%;
+  margin-top: -25%;
+  */
+  
+  width: 40%;
+  height: 80%;
+
+  padding: 20px;  
+  background: rgb(100, 154, 224);
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+
+
 .container {
   padding: 16px;
 }
@@ -79,7 +84,7 @@ span.psw {
 }
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 400px) {
   span.psw {
      display: block;
      float: none;
@@ -88,35 +93,46 @@ span.psw {
      width: 100%;
   }
 }
+
+
+
+h2 {
+  padding: 35px;
+}
 </style>
 </head>
 <body>
 
-<h2>Login Form</h2>
+<h2 style="text-align:center">Login Form</h2>
 
 
 
+<div class="cardView">
 
-<form method="post">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
-  {% csrf_token %}
+  <form method="post">
+    <div class="imgcontainer">
+      <img src="{% static 'img/6.jpg' %}" alt="Avatar" class="avatar">
+    </div>
+    {% csrf_token %}
+  
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+          
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+  
+  </form>
 
-  <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="username" required>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-        
-    <button type="submit">Login</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
-  </div>
+</div>
 
-</form>
 
 </body>
 </html>

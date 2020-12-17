@@ -79,7 +79,13 @@ def index(request):
 
 def home(request):
 
-    return render(request, 'index_2.html')
+    return render(request, 'publi.html')
+
+def  about_pims(request):
+    return render(request,'about_PIMS.html')
+def pricing(request):
+
+    return render(request, 'pricing.html')
 
 def homeso(request):
 

@@ -28,13 +28,13 @@
 
                     <div class="navbar-header">
                         <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <a href="#" class="navbar-brand">Swadesh Properties</a>
+                        <a href="/about_pims" class="navbar-brand">About PIMS</a>
                     </div>
 
                     <div class="navbar-collapse collapse" id="mobile_menu">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Housing Project <span class="caret"></span></a>
+                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Clients <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                   <li><a href="/home">Swadesh Properties Ltd</a></li>
                                   <li><a href="#">Concord Real Estate</a></li>
@@ -45,19 +45,19 @@
                             <li><a href="#">Welcome</a></li>
                             <li><a href="#">Services</a></li>
                             <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Demo</a></li>
                         </ul>
                         <ul class="nav navbar-nav">
-                            <li>
-                                <form action="" class="navbar-form">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input type="search" name="search" id="" placeholder="Search Anything Here..." class="form-control">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                                        </div>
+                          <li>
+                            <form action="" class="navbar-form">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input type="search" name="search" id="" placeholder="Search To our site..." class="form-control">
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></span>
                                     </div>
-                                </form>
-                            </li>
+                                </div>
+                            </form>
+                        </li>
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
@@ -95,6 +95,56 @@
       width: 100%;
       height: 80vh;
     }
+
+    
+
+/*Legend specific*/
+.legend {
+  padding: 6px 8px;
+  font: 14px Arial, Helvetica, sans-serif;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+  /*border-radius: 5px;*/
+  line-height: 24px;
+  color: #555;
+}
+.legend h4 {
+  text-align: center;
+  font-size: 16px;
+  margin: 2px 12px 8px;
+  color: #777;
+}
+
+.legend span {
+  position: relative;
+  bottom: 3px;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin: 0 8px 0 0;
+  opacity: 0.7;
+}
+
+.legend i.icon {
+  background-size: 18px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+
+
+.h4 {
+  display: block;
+  font-size: .67em;
+  margin-top: 2.33em;
+  margin-bottom: 2.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
   </style>
 <body>
 
@@ -213,22 +263,30 @@ var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
 
 //wfs layer
 
-var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
-  layers: "webgis_101:bangladesh_from_db,webgis_101:housing_Project",
+// var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
+//   layers: "webgis_101:bangladesh_from_db,webgis_101:housing_Project",
+
+//   style: {
+//     color: "black",
+//     fillOpacity: "0",
+//     opacity: "0.5",
+//   },
+  var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
+  layers: "webgis_101:housing_Project",
 
   style: {
     color: "black",
     fillOpacity: "0",
     opacity: "0.5",
   },
- 
   onEachFeature: function (feature, layer) {
     // eta speific feature er popup dekhanor jonno
     if(feature.properties && feature.properties.Plot_No){
 
 
     layer.bindPopup(
-      `<h5>Area  Amaount SQFT: ${feature.properties.Area_Sqft}</h5>
+      `<h4>Public Information</h4>
+      <h5>Area  Amaount SQFT: ${feature.properties.Area_Sqft}</h5>
       <h5>Katha Amaount: ${feature.properties.Katha}</h5>
       <h5>Plot Number: ${feature.properties.Plot_No}</h5>
       <h5><a href="/accounts/login/">Details</a></h5>`
@@ -244,13 +302,28 @@ wfsLayer.addTo(map);
 
 // for color full image and its legend which is wms layer in geoserver
 wmsLayer.addTo(map);
-var layerLegend = L.Geoserver.legend("http://localhost:8080/geoserver/wms", {
-  layers: "webgis_101:try101",
-  style: `try104`,
-});
+// var layerLegend = L.Geoserver.legend("http://localhost:8080/geoserver/wms", {
+//   layers: "webgis_101:try101",
+//   style: `try104`,
+// });
 
-layerLegend.addTo(map);
+// layerLegend.addTo(map);
 
+/*Legend specific*/
+var legend = L.control({ position: "topleft" });
+
+legend.onAdd = function(map) {
+  var div = L.DomUtil.create("div", "legend");
+  div.innerHTML += "<h4>Legend</h4>";
+  div.innerHTML += '<i style="background: #E42643"></i><span>Sold plot</span><br>';
+  div.innerHTML += '<i style="background: #13a90d"></i><span>Unsold plot </span><br>';
+  div.innerHTML += '<i style="background: #31181d"></i><span>Road</span><br>';
+ 
+
+  return div;
+};
+
+legend.addTo(map);
 
 
     </script>

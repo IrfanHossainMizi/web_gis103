@@ -28,7 +28,7 @@
 
                     <div class="navbar-header">
                         <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <a href="/about_pims" class="navbar-brand">About PIMS</a>
+                        <a href="#" class="navbar-brand">About PIMS</a>
                     </div>
 
                     <div class="navbar-collapse collapse" id="mobile_menu">
@@ -73,132 +73,143 @@
             </div>
         </div>
     </div>
-
-<div>
-<h1 style="text-align:center">
-    Plot Information Management System (PIMS)
-</h1>
-
 <style>
+
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+    padding:0;
+    margin:0;
+}
+
 body {
-  background: rgb(240, 208, 208);
+	color: #2c3e50;
+	font-size: 1em;
+	font-family: 'Source Serif Pro', 'Helvetica Neue', serif;
 }
 
-.cardView{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  
-  /*
-  This doesn't work
-  margin-left: -25%;
-  margin-top: -25%;
-  */
-  
-  width: 40%;
-  height: 50%;
+h1,
+h2,
+h3 {
+	font-family: 'Source Sans Pro', sans-serif;
+}
 
-  padding: 20px;  
-  background: rgb(223, 92, 103);
-  color: white;
-  text-align: center;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+a {
+	color: #2c3e50;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.header {
+	padding: 8.5em 0;
+	background-image: url('https://dl.dropboxusercontent.com/u/18570019/header-image.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.footer,
+.header-intro,
+.header-name {
+	text-align: center;
+}
+
+.header-intro {
+	margin-bottom: 0em;
+	color: #e67e22;
+	font-size: 2.25em;
+	text-shadow: 0px 1px 0px #d35400;
+}
+
+.header-name {
+	margin-top: -0.2em;
+	color: #89c581;
+	font-size: 6.0em;
+	text-shadow: 0px 3px 0px #d35400;
+	font-weight: 700;
+}
+
+.about,
+.questions {
+	max-width: 37.5em;
+	margin: 0 auto;
+	margin-top: 3em;
+	line-height: 1.5em;
+    font-size: 2.25em;
+}
+
+.questions h3 {
+	color: #e67e22;
 }
 
 
-#myimg{
-    position:center;
-    padding:0px;
-    bottom:10px;
-    margin: 10px auto 20px;
-    display: block;
 
+.social {
+	text-align: center;
+  margin-left: -2em;
 }
 
-
-.cardViewForBOX{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  
-
-  
-  width: 40%;
-  height: 27%;
-
-  padding: 20px;  
-  background: rgba(66, 202, 73, 0);
-  color: white;
-  text-align: center;
-  box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
+.social > li {
+	list-style: none;
+	display: inline-block;
+	margin: 0 1.0em;
 }
-.spoiler
-    {
-        position:center;
-    border:1px solid #ddd;
-    padding:3px;
-    }
-.spoiler .inner
-    {
-        text-align: center;
-    border:1px solid #eee;
-    padding:3px;margin:3px;
-    }
+
 
 </style>
-<script type="text/javascript">
-    function showSpoiler(obj)
-        {
-        var inner = obj.parentNode.getElementsByTagName("div")[0];
-        if (inner.style.display == "none")
-            inner.style.display = "";
-        else
-            inner.style.display = "none";
-        }
-        </script>
-    
-<!-- <div class="dropdown-menu">
-    Percentage sized and still centered.
-  </div> -->
-
 <div>
+    <header class="header">
+        <div>
+            <p class="header-intro">About PIMS</p>
+            <h1 class="header-name">Plot Information Management System (PIMS) is a complete solution for Land Developers.</h1>
+        </div>
+    </header>
 
-    <div class="dropdown cardViewForBOX">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Housing project name 
-        <span class="caret"></span></button>
+    <section class="about">
+        <h1>Facilities in PIMS:</h1>
+        <h2>Land Developers can do </h2>
+
+
         
-        <ul class="dropdown-menu cardView">
-          <li style="text-align:center"><a href="/home">Swadesh Properties Ltd</a></li>
-          <li><a href="#">Concord Real Estate</a></li>
-          <li><a href="#">Nakshi Homes Ltd</a></li>
-        </ul>
-      </div>
-
-</div>
-
-
-
+        <div>
+            <ul>
+                <li>Booking of the plot</li>
+                <li>Reminder of the due payment (SMS/Email)</li>
+                <li>Marketing Solutions</li>
+                <li>Payment Solutions</li>
+                <li>File Management System ( can be store all types of file related to customer/plot)</li>
+                <li>Registration Solution</li>
+              </ul>
 
 
+        </div>
+
+       <h3>Customer:</h3> 
+        
+        
+        
+        
+        
+        
+        <div>
+            <ul>
+                <li>Booking of the plot (Application)</li>
+                <li>Checking available plots in the housing</li>
+                <li>Payment history checking</li>
+                <li>Online Payment (SSL Payment Gateway directly to to Land Developer)</li>
+                <li>Application ( Any Change/Modification/ Land Development Fees/ Plot Registration etc)</li>
+              </ul>
 
 
-<div class="spoiler">
-    <img id="myimg" onclick="showSpoiler(this);" src="{% static 'img/7.jpg' %}" alt="flowers in bd">
-    <div class="inner" style="display:none;">
+        </div>
 
 
-            Geo-Planning for Advanced Development (GPAD)<br>
-
-            House 4 (Flat A1 & A2), Road 4, Block J, Banashree, Dhaka 1219<br>
-            
-            Phone: 01717087089; Email: gpadbd@gmail.com
-
-
-
-    </div>
-</div>
 
 
 </body>
