@@ -73,16 +73,32 @@ def sodesh(request):
     sodeshData = serialize('geojson', Sodesh.objects.all())
     return HttpResponse(sodeshData, content_type='geojson')
 
+
+def more_information(request):
+    sodeshData =  Sodesh.objects.all()
+    return render(request, 'more_information.html', locals())
+
+
+
+def more_informationht(request):
+    return render(request, 'more_information.html')
+
 def index(request):
     return render(request, 'index.html')
 
 
 def home(request):
 
-    return render(request, 'publi.html')
+    return render(request, 'public_data.html')
 
 def  about_pims(request):
     return render(request,'about_PIMS.html')
+
+
+
+
+def  contact(request):
+    return render(request,'contact_us.html')
 def pricing(request):
 
     return render(request, 'pricing.html')
@@ -90,3 +106,6 @@ def pricing(request):
 def homeso(request):
 
     return render(request, 'home_sodesh.html')
+
+
+

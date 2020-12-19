@@ -46,6 +46,7 @@
                             <li><a href="#">Services</a></li>
                             <li><a href="#">Gallery</a></li>
                             <li><a href="#">Demo</a></li>
+                            <li><a href="/contact">Contact Us</a></li>
                         </ul>
                         <ul class="nav navbar-nav">
                           <li>
@@ -286,9 +287,9 @@ var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
 
     layer.bindPopup(
       `<h4>Public Information</h4>
-      <h5>Area  Amaount SQFT: ${feature.properties.Area_Sqft}</h5>
-      <h5>Katha Amaount: ${feature.properties.Katha}</h5>
       <h5>Plot Number: ${feature.properties.Plot_No}</h5>
+      <h5>Plot Size: ${feature.properties.Katha} katha</h5>
+      <h5>Block: </h5>
       <h5><a href="/accounts/login/">Details</a></h5>`
     );
 

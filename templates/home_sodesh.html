@@ -29,7 +29,7 @@
 
                     <div class="navbar-header">
                         <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <a href="#" class="navbar-brand">About PIMS</a>
+                        <a href="/about_pims" class="navbar-brand">About PIMS</a>
                     </div>
 
                     <div class="navbar-collapse collapse" id="mobile_menu">
@@ -47,6 +47,7 @@
                             <li><a href="#">Services</a></li>
                             <li><a href="#">Gallery</a></li>
                             <li><a href="#">Demo</a></li>
+                            <li><a href="/contact">Contact Us</a></li>
                         </ul>
                         <ul class="nav navbar-nav">
                             <li>
@@ -152,7 +153,7 @@
 
     
     <script>
-        var map = L.map("map").setView([23.692329, 90.391204], 13);
+        var map = L.map("map").setView([23.655575, 90.375662], 17);
   
         var osm = L.tileLayer(
           "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -223,17 +224,23 @@ $.getJSON("{% url 'sodeshData' %}", function (data) {
     L.geoJSON(data, {
   onEachFeature: function (feature, layer) {
     layer.bindPopup(
-      `<h5>Area  Amaount SQFT: ${feature.properties.area_sqft}</h5>
-      <h5>Katha Amaount: ${feature.properties.katha}</h5>
+      `<h4> Private Information</h4>
       <h5>Plot Number: ${feature.properties.plot_no}</h5>
-      <h5>Plot Area Bigha: ${feature.properties.area_bigha}</h5>
+      <h5>Plot Size: ${feature.properties.katha} katha</h5>
       <h5>Owner Name: ${feature.properties.owner_name}</h5>
+      <h5>Contact : </h5>
+      <h5>Area  Amaount SQFT: ${feature.properties.area_sqft}</h5>
+
+
+      <h5>Plot Area Bigha: ${feature.properties.area_bigha}</h5>
+   
       <h5>Father Name: ${feature.properties.father__}</h5>
       <h5>Spouse Name: ${feature.properties.spouse_nam}</h5>
       <h5>Area K: ${feature.properties.area_k}</h5>
       <h5>Katha ammount : ${feature.properties.new}</h5>
       <h5>Land condition : ${feature.properties.land_cat}</h5>
-      <h5>Dimension: ${feature.properties.dimension}</h5>`
+      <h5>Dimension: ${feature.properties.dimension}</h5>
+      <h5><a href="../more_infortion/?plot_number =${feature.properties.plot_no}">More Information</a></h5>`
     );
   },}).addTo(map);
 console.log(data);

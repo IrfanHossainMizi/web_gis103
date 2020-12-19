@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import home,index, bangladesh, sodesh,pricing,about_pims
+from .views import home,index, bangladesh, sodesh,pricing,about_pims, contact
 
 urlpatterns = [
 
@@ -10,4 +10,6 @@ urlpatterns = [
     path('bangladeshData', bangladesh, name='bangladeshData'),
     path('sodeshData', sodesh, name='sodeshData'),
     path('about_pims',about_pims,name='about_pims'),
+    path('contact',contact,name='contact'),
+    path('contact',contact,name='contact'),
 ]
