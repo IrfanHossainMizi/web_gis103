@@ -21,7 +21,8 @@ import dj_database_url
 dotenv_path = join(dirname(__file__), '../.env')
 # Load file from the path.
 load_dotenv(dotenv_path)
-
+GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
+GEOS_LIBRARY_PATH = os.environ.get('GEOS_LIBRARY_PATH')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
