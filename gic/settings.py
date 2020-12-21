@@ -109,13 +109,26 @@ WSGI_APPLICATION = 'gic.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'NAME': 'd92317coeq7mlr',
+        'USER': 'ajxdacljksxyzd',
+        'PASSWORD': 'e6b6a7b3e5c24ca2860e2cef47c5f4039b1ec8c5caecd40d3536ef12bfb136b6',
+        'HOST': 'ec2-3-220-23-212.compute-1.amazonaws.com',
         'POST' : '5432'
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost',
+#         'POST' : '5432'
+#     }
+# }
+
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
