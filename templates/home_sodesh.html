@@ -240,7 +240,7 @@ $.getJSON("{% url 'sodeshData' %}", function (data) {
       <h5>Katha ammount : ${feature.properties.new}</h5>
       <h5>Land condition : ${feature.properties.land_cat}</h5>
       <h5>Dimension: ${feature.properties.dimension}</h5>
-      <h5><a href="../more_infortion/?plot_number =${feature.properties.plot_no}">More Information</a></h5>`
+      <h5><a href="../more_infortion/?plot_num=${feature.properties.plot_no}">More Information</a></h5>`
     );
   },}).addTo(map);
 console.log(data);

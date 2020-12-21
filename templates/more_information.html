@@ -1,5 +1,5 @@
 {% load static %}
-{% url 'sodeshData' %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,21 +87,31 @@
     <h1>Plot Detail information</h1>
 <h1>{{plot_num}}</h1>
 <script>
-var queryString = location.search.substring(1);
-var a = queryString.split("|");
-</script>
+// var queryString = location.search.substring(1);
+// var a = queryString.split("plot_num");
 
+
+
+// document.getElementById("demo").innerHTML = a;
+
+
+</script>
 
 <h4><ul>
 
-    <h1>{}</h1>
     {% for athlete in sodeshData %}
-        {% if athlete.plot_no == '9'  %}
+    
+        {% if athlete.plot_no == sum %}
             <li>Plot No. {{ athlete.plot_no }}</li>
-            <li> Area (Katha){{ athlete.katha }}</li>
+            <li>Area Sqft {{ athlete.area_sqft }}</li>
+            <li>Area Bigha {{ athlete.area_bigha }}</li>
+            <li>katha {{ athlete.katha_1 }}</li>
+            <li>Dimension. {{ athlete.dimension }}</li>
+            <li>owner name. {{ athlete.owner_name }}</li>
+            <li>spouse name. {{ athlete.spouse_nam }}</li>
+            <li> land category {{ athlete.land_cat  }}</li>
         {% endif %}
     {% endfor %}
-
   
 
 

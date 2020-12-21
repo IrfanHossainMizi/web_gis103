@@ -3,6 +3,7 @@ from django.core.serializers import serialize
 from django.http import HttpResponse
 from .models import Bangladesh
 from django.contrib import messages
+import re
 
 from .models import Sodesh
 
@@ -76,6 +77,35 @@ def sodesh(request):
 
 def more_information(request):
     sodeshData =  Sodesh.objects.all()
+    fg = str(request.get_full_path)
+    
+    ft1 = str(re.findall("[0-9]", fg))
+    ft2 = str(re.findall("[0-9][0-9]", fg))
+    ft3 = str(re.findall("[0-9][0-9][0-9]", fg))
+    x1 = '\n'.join(ft1)
+    x2 = '\n'.join(ft2)
+    x3 = '\n'.join(ft3)
+
+
+    d1 = x1[4:5]
+    d2_1 = x2[4:5]
+    d2_2 = x2[6:7]
+    d2 = d2_1 + d2_2
+    d3_1 = x3[4:5]
+    d3_2 = x3[6:7]
+    d3_3 = x3[8:9]   
+    d3 = d3_1 + d3_2 +d3_3
+
+    if len(d3) > 2:
+        sum = d3
+    elif len(d2) > 1:
+        sum = d2
+    else:
+        sum = d1
+
+
+    
+
     return render(request, 'more_information.html', locals())
 
 
