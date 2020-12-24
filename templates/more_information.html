@@ -84,39 +84,218 @@
 
 
 
-    <h1>Plot Detail information</h1>
-<h1>{{plot_num}}</h1>
-<script>
-// var queryString = location.search.substring(1);
-// var a = queryString.split("plot_num");
+
+
+  
+<style>
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+body {
+  background-color: #3e94ec;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
+div.table-title {
+   display: block;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+}
+
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+
+/*** Table Styles **/
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+</style>
 
 
 
-// document.getElementById("demo").innerHTML = a;
-
-
-</script>
-
-<h4><ul>
+<body>
+<div class="table-title">
+<h3>Plot Detail information</h3>
+</div>
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Name</th>
+<th class="text-left">Values</th>
+</tr>
+</thead>
 
     {% for athlete in sodeshData %}
     
         {% if athlete.plot_no == sum %}
-            <li>Plot No. {{ athlete.plot_no }}</li>
-            <li>Area Sqft {{ athlete.area_sqft }}</li>
-            <li>Area Bigha {{ athlete.area_bigha }}</li>
-            <li>katha {{ athlete.katha_1 }}</li>
-            <li>Dimension. {{ athlete.dimension }}</li>
-            <li>owner name. {{ athlete.owner_name }}</li>
-            <li>spouse name. {{ athlete.spouse_nam }}</li>
-            <li> land category {{ athlete.land_cat  }}</li>
+            <tbody class="table-hover">
+            <tr>
+            <td class="text-left">Plot Number</td>
+            <td class="text-left">{{ athlete.plot_no }}</td>
+            </tr>
+            <tr>
+            <td class="text-left">Area square (ft)</td>
+            <td class="text-left">{{ athlete.area_sqft }}</td>
+            </tr>
+            <tr>
+            <td class="text-left">Area Bigha</td>
+            <td class="text-left">{{ athlete.area_bigha }}</td>
+            </tr>
+            <tr>
+            <td class="text-left">katha</td>
+            <td class="text-left">{{ athlete.katha_1 }}</td>
+            </tr>
+            <tr>
+            <td class="text-left">Dimension.</td>
+            <td class="text-left">{{ athlete.dimension }}</td>
+            </tr>
+
+            <tr>
+            <td class="text-left">Owner name.</td>
+            <td class="text-left">{{ athlete.owner_name }}</td>
+            </tr>
+
+            <tr>
+            <td class="text-left">Spouse name.</td>
+            <td class="text-left">{{ athlete.spouse_nam }}</td>
+            </tr>
+            <tr>
+            <td class="text-left">Land category</td>
+            <td class="text-left">{{ athlete.land_cat  }}</td>
+            </tr>
+
+            </tbody>
         {% endif %}
     {% endfor %}
+
+
+</table>
   
 
-
-    </ul></h4>
-    <h5>Plot Number: {{ sodeshData.plot_no }}</h5>
+  </body>
 </body>
 </html>
+
 

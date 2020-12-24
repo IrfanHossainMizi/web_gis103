@@ -2,229 +2,227 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-  />
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>`
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="{% static 'L.Geoserver.js' %}"></script>
-  <!-- <script src="{% static 'L.leaflet.browser.print.min.js' %}"></script> -->
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    `
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'L.Geoserver.js' %}"></script>
+    <!-- <script src="{% static 'L.leaflet.browser.print.min.js' %}"></script> -->
 
     <title>Geo Inmormatics</title>
-</head>
-<!-- try for nav bar -->
+  </head>
+  <!-- try for nav bar -->
 
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <div class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="navbar-header">
+            <button
+              class="navbar-toggle"
+              data-target="#mobile_menu"
+              data-toggle="collapse"
+            >
+              <span class="icon-bar"></span><span class="icon-bar"></span
+              ><span class="icon-bar"></span>
+            </button>
+            <a href="/about_pims" class="navbar-brand">About PIMS</a>
+          </div>
 
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
-<div class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <a href="/about_pims" class="navbar-brand">About PIMS</a>
+          <div class="navbar-collapse collapse" id="mobile_menu">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/pricing">Pricing</a></li>
+              <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  >Our Clients <span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/home">Swadesh Properties Ltd</a></li>
+                  <li><a href="#">Concord Real Estate</a></li>
+                  <li><a href="#">Nakshi Homes Ltd</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Welcome</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Gallery</a></li>
+              <li><a href="#">Demo</a></li>
+              <li><a href="/contact">Contact Us</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+              <li>
+                <form action="" class="navbar-form">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input
+                        type="search"
+                        name="search"
+                        id=""
+                        placeholder="Search Anything Here..."
+                        class="form-control"
+                      />
+                      <span class="input-group-addon"
+                        ><span class="glyphicon glyphicon-search"></span
+                      ></span>
                     </div>
+                  </div>
+                </form>
+              </li>
+            </ul>
 
-                    <div class="navbar-collapse collapse" id="mobile_menu">
-                        <ul class="nav navbar-nav">
-                          <li class="active"><a href="/pricing">Pricing</a></li>
-                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Clients <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                  <li><a href="/home">Swadesh Properties Ltd</a></li>
-                                  <li><a href="#">Concord Real Estate</a></li>
-                                  <li><a href="#">Nakshi Homes Ltd</a></li>
-
-                                </ul>
-                            </li>
-                            <li><a href="#">Welcome</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Demo</a></li>
-                            <li><a href="/contact">Contact Us</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <form action="" class="navbar-form">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input type="search" name="search" id="" placeholder="Search Anything Here..." class="form-control">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                                        </div>
-                                    </div>
-                                </form>
-                            </li>
-                        </ul>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/accounts/login">Login</a></li>
-                                    <li><a href="/accounts/logout/">Log out</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#"
+                  ><span class="glyphicon glyphicon-user"></span>Profile</a
+                >
+              </li>
+              <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  ><span class="glyphicon glyphicon-log-in"></span> Login / Sign
+                  Up <span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/accounts/login">Login</a></li>
+                  <li><a href="/accounts/logout/">Log out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </div>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <!-- try for nav bar end -->
 
-
-
-
-<!-- try for nav bar end -->
-
-
-
-
-
-<style>
+  <style>
     #map {
       width: 90%;
       height: 70vh;
     }
 
+    /*Legend specific*/
+    .legend {
+      padding: 6px 8px;
+      font: 14px Arial, Helvetica, sans-serif;
+      background: white;
+      background: rgba(255, 255, 255, 0.8);
+      /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+      /*border-radius: 5px;*/
+      line-height: 24px;
+      color: #555;
+    }
+    .legend h4 {
+      text-align: center;
+      font-size: 16px;
+      margin: 2px 12px 8px;
+      color: #777;
+    }
 
+    .legend span {
+      position: relative;
+      bottom: 3px;
+    }
 
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin: 0 8px 0 0;
+      opacity: 0.7;
+    }
 
-
-
-/*Legend specific*/
-.legend {
-  padding: 6px 8px;
-  font: 14px Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(255, 255, 255, 0.8);
-  /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
-  /*border-radius: 5px;*/
-  line-height: 24px;
-  color: #555;
-}
-.legend h4 {
-  text-align: center;
-  font-size: 16px;
-  margin: 2px 12px 8px;
-  color: #777;
-}
-
-.legend span {
-  position: relative;
-  bottom: 3px;
-}
-
-.legend i {
-  width: 18px;
-  height: 18px;
-  float: left;
-  margin: 0 8px 0 0;
-  opacity: 0.7;
-}
-
-.legend i.icon {
-  background-size: 18px;
-  background-color: rgba(255, 255, 255, 1);
-}
-
-
+    .legend i.icon {
+      background-size: 18px;
+      background-color: rgba(255, 255, 255, 1);
+    }
   </style>
-<body>
+  <body>
+    <h1 style="text-align: center">Swadesh Properties Ltd</h1>
 
-
-    <h1 style="text-align:center">Swadesh Properties Ltd</h1>
-
-    
     <button class="print-map">Print map</button>
 
     <div id="map">
-        <!-- <button onclick='openFullMap()' class="leaflet-control">Full map screen</button> -->
+      <!-- <button onclick='openFullMap()' class="leaflet-control">Full map screen</button> -->
     </div>
 
-
-    
     <script>
-        var map = L.map("map").setView([23.655575, 90.375662], 17);
-  
-        var osm = L.tileLayer(
-          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-          {
-            attribution:
-              "&copy; <a href='https://openstreetmap.org/copyright'> Openstreet map</a> contributors",
-          }
-        );
-  
-        var darkLayer = L.tileLayer(
-          "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
-          {
-            maxZoom: 20,
-            attribution:
-              '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-          }
-        );
-  
-        var watercolor = L.tileLayer(
-          "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
-          {
-            attribution:
-              'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            subdomains: "abcd",
-            minZoom: 1,
-            maxZoom: 16,
-            ext: "jpg",
-          }
-        );
-  
+      var map = L.map("map").setView([23.655575, 90.375662], 17);
 
-// For imagery view
-var mapLink = 
-            '<a href="http://www.esri.com/">Esri</a>';
-       var wholink = 
-            'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
-        var imagery = L.tileLayer(
-            'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            attribution: '&copy; '+mapLink+', '+wholink,
-            maxZoom: 17,
-            });
-  
-  
-        var baseLayers = {
-          osm: osm,
-          // dark: darkLayer,
-          "water color map": watercolor,
-          "Imagery view" : imagery,
-        };
-        osm.addTo(map);
-        L.control.layers(baseLayers).addTo(map);
+      var osm = L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          attribution:
+            "&copy; <a href='https://openstreetmap.org/copyright'> Openstreet map</a> contributors",
+        }
+      );
 
+      var darkLayer = L.tileLayer(
+        "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+        {
+          maxZoom: 20,
+          attribution:
+            '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+        }
+      );
 
+      var watercolor = L.tileLayer(
+        "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
+        {
+          attribution:
+            'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          subdomains: "abcd",
+          minZoom: 1,
+          maxZoom: 16,
+          ext: "jpg",
+        }
+      );
 
+      // For imagery view
+      var mapLink = '<a href="http://www.esri.com/">Esri</a>';
+      var wholink =
+        "i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community";
+      var imagery = L.tileLayer(
+        "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        {
+          attribution: "&copy; " + mapLink + ", " + wholink,
+          maxZoom: 17,
+        }
+      );
 
-// wms layer
-// for color full map in geoserver 
-var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
-  layers: "webgis_101:try_area_k_housing",
-  
-});
-wmsLayer.addTo(map);
+      var baseLayers = {
+        osm: osm,
+        // dark: darkLayer,
+        "water color map": watercolor,
+        "Imagery view": imagery,
+      };
+      osm.addTo(map);
+      L.control.layers(baseLayers).addTo(map);
 
+      // wms layer
+      // for color full map in geoserver
+      var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
+        layers: "webgis_101:try_area_k_housing",
+      });
+      wmsLayer.addTo(map);
 
-
-
-$.getJSON("{% url 'sodeshData' %}", function (data) {
-    L.geoJSON(data, {
-  onEachFeature: function (feature, layer) {
-    layer.bindPopup(
-      `<h4> Private Information</h4>
+      $.getJSON("{% url 'sodeshData' %}", function (data) {
+        L.geoJSON(data, {
+          onEachFeature: function (feature, layer) {
+            layer.bindPopup(
+              `<h4> Private Information</h4>
       <h5>Plot Number: ${feature.properties.plot_no}</h5>
       <h5>Plot Size: ${feature.properties.katha} katha</h5>
       <h5>Owner Name: ${feature.properties.owner_name}</h5>
@@ -241,29 +239,29 @@ $.getJSON("{% url 'sodeshData' %}", function (data) {
       <h5>Land condition : ${feature.properties.land_cat}</h5>
       <h5>Dimension: ${feature.properties.dimension}</h5>
       <h5><a href="../more_infortion/?plot_num=${feature.properties.plot_no}">More Information</a></h5>`
-    );
-  },}).addTo(map);
-console.log(data);
-});
+            );
+          },
+        }).addTo(map);
+        console.log(data);
+      });
 
-/*Legend specific*/
-var legend = L.control({ position: "topleft" });
+      /*Legend specific*/
+      var legend = L.control({ position: "topleft" });
 
-legend.onAdd = function(map) {
-  var div = L.DomUtil.create("div", "legend");
-  div.innerHTML += "<h4>Legend</h4>";
-  div.innerHTML += '<i style="background: #E42643"></i><span>Sold plot</span><br>';
-  div.innerHTML += '<i style="background: #13a90d"></i><span>Unsold plot </span><br>';
-  div.innerHTML += '<i style="background: #31181d"></i><span>Road</span><br>';
- 
+      legend.onAdd = function (map) {
+        var div = L.DomUtil.create("div", "legend");
+        div.innerHTML += "<h4>Legend</h4>";
+        div.innerHTML +=
+          '<i style="background: #E42643"></i><span>Sold plot</span><br>';
+        div.innerHTML +=
+          '<i style="background: #13a90d"></i><span>Unsold plot </span><br>';
+        div.innerHTML +=
+          '<i style="background: #31181d"></i><span>Road</span><br>';
 
-  return div;
-};
+        return div;
+      };
 
-legend.addTo(map);
-
-
+      legend.addTo(map);
     </script>
-</body>
+  </body>
 </html>
-
