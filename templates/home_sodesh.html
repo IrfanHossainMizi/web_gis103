@@ -43,16 +43,7 @@
           <div class="navbar-collapse collapse" id="mobile_menu">
             <ul class="nav navbar-nav">
               <li class="active"><a href="/pricing">Pricing</a></li>
-              <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                  >Our Clients <span class="caret"></span
-                ></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/home">Swadesh Properties Ltd</a></li>
-                  <li><a href="#">Concord Real Estate</a></li>
-                  <li><a href="#">Nakshi Homes Ltd</a></li>
-                </ul>
-              </li>
+
               <li><a href="#">Welcome</a></li>
               <li><a href="#">Services</a></li>
               <li><a href="#">Gallery</a></li>
@@ -152,11 +143,9 @@
   <body>
     <h1 style="text-align: center">Swadesh Properties Ltd</h1>
 
-    <button class="print-map">Print map</button>
+    {% comment %} <button class="print-map">Print map</button> {% endcomment %}
 
-    <div id="map">
-      <!-- <button onclick='openFullMap()' class="leaflet-control">Full map screen</button> -->
-    </div>
+    <div id="map"></div>
 
     <script>
       var map = L.map("map").setView([23.655575, 90.375662], 17);

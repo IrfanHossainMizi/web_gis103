@@ -2,214 +2,214 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-  />
-  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>`
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="{% static 'L.Geoserver.js' %}"></script>
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    `
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static 'L.Geoserver.js' %}"></script>
 
     <title>Geo Inmormatics</title>
-</head>
-<!-- try for nav bar -->
+  </head>
+  <!-- try for nav bar -->
 
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  />
+  <div class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="navbar-header">
+            <button
+              class="navbar-toggle"
+              data-target="#mobile_menu"
+              data-toggle="collapse"
+            >
+              <span class="icon-bar"></span><span class="icon-bar"></span
+              ><span class="icon-bar"></span>
+            </button>
+            <a href="/about_pims" class="navbar-brand">About PIMS</a>
+          </div>
 
+          <div class="navbar-collapse collapse" id="mobile_menu">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    
-<div class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="navbar-header">
-                        <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <a href="/about_pims" class="navbar-brand">About PIMS</a>
+              <li><a href="#">Welcome</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Gallery</a></li>
+              <li><a href="#">Demo</a></li>
+              <li><a href="/contact">Contact Us</a></li>
+            </ul>
+            <ul class="nav navbar-nav">
+              <li>
+                <form action="" class="navbar-form">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input
+                        type="search"
+                        name="search"
+                        id=""
+                        placeholder="Search To our site..."
+                        class="form-control"
+                      />
+                      <span class="input-group-addon"
+                        ><span class="glyphicon glyphicon-arrow-right"></span
+                      ></span>
                     </div>
+                  </div>
+                </form>
+              </li>
+            </ul>
 
-                    <div class="navbar-collapse collapse" id="mobile_menu">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Clients <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                  <li><a href="/home">Swadesh Properties Ltd</a></li>
-                                  <li><a href="#">Concord Real Estate</a></li>
-                                  <li><a href="#">Nakshi Homes Ltd</a></li>
-
-                                </ul>
-                            </li>
-                            <li><a href="#">Welcome</a></li>
-                            <li><a href="#">Services</a></li>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Demo</a></li>
-                            <li><a href="/contact">Contact Us</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav">
-                          <li>
-                            <form action="" class="navbar-form">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="search" name="search" id="" placeholder="Search To our site..." class="form-control">
-                                        <span class="input-group-addon"><span class="glyphicon glyphicon-arrow-right"></span></span>
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
-                        </ul>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/accounts/login">Login</a></li>
-                                    <li><a href="/accounts/logout/">Log out</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#"
+                  ><span class="glyphicon glyphicon-user"></span> Profile</a
+                >
+              </li>
+              <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                  ><span class="glyphicon glyphicon-log-in"></span> Login / Sign
+                  Up <span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/accounts/login">Login</a></li>
+                  <li><a href="/accounts/logout/">Log out</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <!-- try for nav bar end -->
 
+  <!-- try for slide pictur -->
 
-
-
-<!-- try for nav bar end -->
-
-
-<!-- try for slide pictur -->
-
-
-
-
-
-<style>
+  <style>
     #map {
       width: 100%;
       height: 80vh;
     }
 
-    
+    /*Legend specific*/
+    .legend {
+      padding: 6px 8px;
+      font: 14px Arial, Helvetica, sans-serif;
+      background: white;
+      background: rgba(255, 255, 255, 0.8);
+      /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+      /*border-radius: 5px;*/
+      line-height: 24px;
+      color: #555;
+    }
+    .legend h4 {
+      text-align: center;
+      font-size: 16px;
+      margin: 2px 12px 8px;
+      color: #777;
+    }
 
-/*Legend specific*/
-.legend {
-  padding: 6px 8px;
-  font: 14px Arial, Helvetica, sans-serif;
-  background: white;
-  background: rgba(255, 255, 255, 0.8);
-  /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
-  /*border-radius: 5px;*/
-  line-height: 24px;
-  color: #555;
-}
-.legend h4 {
-  text-align: center;
-  font-size: 16px;
-  margin: 2px 12px 8px;
-  color: #777;
-}
+    .legend span {
+      position: relative;
+      bottom: 3px;
+    }
 
-.legend span {
-  position: relative;
-  bottom: 3px;
-}
+    .legend i {
+      width: 18px;
+      height: 18px;
+      float: left;
+      margin: 0 8px 0 0;
+      opacity: 0.7;
+    }
 
-.legend i {
-  width: 18px;
-  height: 18px;
-  float: left;
-  margin: 0 8px 0 0;
-  opacity: 0.7;
-}
+    .legend i.icon {
+      background-size: 18px;
+      background-color: rgba(255, 255, 255, 1);
+    }
 
-.legend i.icon {
-  background-size: 18px;
-  background-color: rgba(255, 255, 255, 1);
-}
-
-
-
-.h4 {
-  display: block;
-  font-size: .67em;
-  margin-top: 2.33em;
-  margin-bottom: 2.33em;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: bold;
-}
+    .h4 {
+      display: block;
+      font-size: 0.67em;
+      margin-top: 2.33em;
+      margin-bottom: 2.33em;
+      margin-left: 0;
+      margin-right: 0;
+      font-weight: bold;
+    }
   </style>
-<body>
-
-
-    <h1 style="text-align:center">Swadesh Properties Ltd</h1>
+  <body>
+    <h1 style="text-align: center">Swadesh Properties Ltd</h1>
     <div id="map"></div>
 
-
-    
     <script>
-        var map = L.map("map").setView([23.736260, 90.466523], 7);
-  
-        var osm = L.tileLayer(
-          "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-          {
-            attribution:
-              "&copy; <a href='https://openstreetmap.org/copyright'> Openstreet map</a> contributors",
-          }
-        );
-  
-        var darkLayer = L.tileLayer(
-          "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
-          {
-            maminZoom: 1,
-            xZoom: 20,
-            attribution:
-              '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
-          }
-        );
-  
-        var watercolor = L.tileLayer(
-          "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
-          {
-            attribution:
-              'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-            subdomains: "abcd",
-            minZoom: 1,
-            maxZoom: 16,
-            ext: "jpg",
-          }
-        );
-// For imagery view
-       var mapLink = 
-            '<a href="http://www.esri.com/">Esri</a>';
-       var wholink = 
-            'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
-        var imagery = L.tileLayer(
-            'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            attribution: '&copy; '+mapLink+', '+wholink,
-            maxZoom: 18,
-            });
-  
-  
-        var baseLayers = {
-          osm: osm,
-          // dark: darkLayer,
-          "water color map": watercolor,
-          "Imagery view" : imagery,
-        };
-  
-        osm.addTo(map);
-        L.control.layers(baseLayers).addTo(map);
-// give color using code on this shape file
-              //Geojson style function
+      var map = L.map("map").setView([23.73626, 90.466523], 7);
+
+      var osm = L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          attribution:
+            "&copy; <a href='https://openstreetmap.org/copyright'> Openstreet map</a> contributors",
+        }
+      );
+
+      var darkLayer = L.tileLayer(
+        "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png",
+        {
+          maminZoom: 1,
+          xZoom: 20,
+          attribution:
+            '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+        }
+      );
+
+      var watercolor = L.tileLayer(
+        "https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}",
+        {
+          attribution:
+            'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          subdomains: "abcd",
+          minZoom: 1,
+          maxZoom: 16,
+          ext: "jpg",
+        }
+      );
+      // For imagery view
+      var mapLink = '<a href="http://www.esri.com/">Esri</a>';
+      var wholink =
+        "i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community";
+      var imagery = L.tileLayer(
+        "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        {
+          attribution: "&copy; " + mapLink + ", " + wholink,
+          maxZoom: 18,
+        }
+      );
+
+      var baseLayers = {
+        osm: osm,
+        // dark: darkLayer,
+        "water color map": watercolor,
+        "Imagery view": imagery,
+      };
+
+      osm.addTo(map);
+      L.control.layers(baseLayers).addTo(map);
+      // give color using code on this shape file
+      //Geojson style function
       // function geojsonStyle(feature) {
       //   return {
       //     fillColor: getColor(feature.properties.adm1_en),
@@ -237,97 +237,86 @@
       //   }
       // }
 
-        // $.getJSON("{% url 'bangladeshData' %}", function (data) {
-        //     L.geoJSON(data, {
-        //   onEachFeature: function (feature, layer) {
-        //     layer.bindPopup(
-        //       `<h5>District Name: ${feature.properties.adm2_en}</h5><h5>Region name: ${feature.properties.adm1_en}</h5>`
-        //     );
-        //   },style: geojsonStyle,}).addTo(map);
-        // console.log(data);
-        
-        // });
+      // $.getJSON("{% url 'bangladeshData' %}", function (data) {
+      //     L.geoJSON(data, {
+      //   onEachFeature: function (feature, layer) {
+      //     layer.bindPopup(
+      //       `<h5>District Name: ${feature.properties.adm2_en}</h5><h5>Region name: ${feature.properties.adm1_en}</h5>`
+      //     );
+      //   },style: geojsonStyle,}).addTo(map);
+      // console.log(data);
 
-// geoserver request
+      // });
 
+      // geoserver request
 
-// wms layer
-// for color full map in geoserver 
-var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
-  layers: "webgis_101:try101",
-});
+      // wms layer
+      // for color full map in geoserver
+      var wmsLayer = L.Geoserver.wms("http://localhost:8080/geoserver/wms", {
+        layers: "webgis_101:try101",
+      });
 
+      //wfs layer
 
+      // var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
+      //   layers: "webgis_101:bangladesh_from_db,webgis_101:housing_Project",
 
+      //   style: {
+      //     color: "black",
+      //     fillOpacity: "0",
+      //     opacity: "0.5",
+      //   },
+      var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
+        layers: "webgis_101:housing_Project",
 
-
-
-//wfs layer
-
-// var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
-//   layers: "webgis_101:bangladesh_from_db,webgis_101:housing_Project",
-
-//   style: {
-//     color: "black",
-//     fillOpacity: "0",
-//     opacity: "0.5",
-//   },
-  var wfsLayer = L.Geoserver.wfs("http://localhost:8080/geoserver/wfs", {
-  layers: "webgis_101:housing_Project",
-
-  style: {
-    color: "black",
-    fillOpacity: "0",
-    opacity: "0.5",
-  },
-  onEachFeature: function (feature, layer) {
-    // eta speific feature er popup dekhanor jonno
-    if(feature.properties && feature.properties.Plot_No){
-
-
-    layer.bindPopup(
-      `<h4>Public Information</h4>
+        style: {
+          color: "black",
+          fillOpacity: "0",
+          opacity: "0.5",
+        },
+        onEachFeature: function (feature, layer) {
+          // eta speific feature er popup dekhanor jonno
+          if (feature.properties && feature.properties.Plot_No) {
+            layer.bindPopup(
+              `<h4>Public Information</h4>
       <h5>Plot Number: ${feature.properties.Plot_No}</h5>
       <h5>Plot Size: ${feature.properties.Katha} katha</h5>
       <h5>Block: </h5>
       <h5><a href="/accounts/login/">Details</a></h5>`
-    );
+            );
+          }
+        },
+      });
+      wfsLayer.addTo(map);
 
-    }
-  },
-});
-wfsLayer.addTo(map);
+      //.......
 
+      // for color full image and its legend which is wms layer in geoserver
+      wmsLayer.addTo(map);
+      // var layerLegend = L.Geoserver.legend("http://localhost:8080/geoserver/wms", {
+      //   layers: "webgis_101:try101",
+      //   style: `try104`,
+      // });
 
-//.......
+      // layerLegend.addTo(map);
 
-// for color full image and its legend which is wms layer in geoserver
-wmsLayer.addTo(map);
-// var layerLegend = L.Geoserver.legend("http://localhost:8080/geoserver/wms", {
-//   layers: "webgis_101:try101",
-//   style: `try104`,
-// });
+      /*Legend specific*/
+      var legend = L.control({ position: "topleft" });
 
-// layerLegend.addTo(map);
+      legend.onAdd = function (map) {
+        var div = L.DomUtil.create("div", "legend");
+        div.innerHTML += "<h4>Legend</h4>";
+        div.innerHTML +=
+          '<i style="background: #E42643"></i><span>Sold plot</span><br>';
+        div.innerHTML +=
+          '<i style="background: #13a90d"></i><span>Unsold plot </span><br>';
+        div.innerHTML +=
+          '<i style="background: #31181d"></i><span>Road</span><br>';
 
-/*Legend specific*/
-var legend = L.control({ position: "topleft" });
+        return div;
+      };
 
-legend.onAdd = function(map) {
-  var div = L.DomUtil.create("div", "legend");
-  div.innerHTML += "<h4>Legend</h4>";
-  div.innerHTML += '<i style="background: #E42643"></i><span>Sold plot</span><br>';
-  div.innerHTML += '<i style="background: #13a90d"></i><span>Unsold plot </span><br>';
-  div.innerHTML += '<i style="background: #31181d"></i><span>Road</span><br>';
- 
-
-  return div;
-};
-
-legend.addTo(map);
-
-
+      legend.addTo(map);
     </script>
-</body>
+  </body>
 </html>
-
